@@ -1,0 +1,61 @@
+[gd_scene load_steps=7 format=3 uid="uid://dbcpit5a81ma4"]
+
+[ext_resource type="FontFile" uid="uid://bcxkk3tp3yy2n" path="res://Assets/Fonts/Kenney Future.ttf" id="1_j5kwf"]
+[ext_resource type="Texture2D" uid="uid://bxn6gjmtvmrt7" path="res://Assets/UI/button_rectangle_depth_gradient.png" id="2_fhts8"]
+[ext_resource type="Script" path="res://Scripts/UI/NewGameButton.cs" id="3_rc0aa"]
+[ext_resource type="AudioStream" uid="uid://cebcvbuogg578" path="res://Assets/Audio/tap-a.ogg" id="4_6e1nb"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_yqy4v"]
+font = ExtResource("1_j5kwf")
+font_size = 48
+
+[sub_resource type="LabelSettings" id="LabelSettings_ld6o4"]
+font = ExtResource("1_j5kwf")
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_right = 1148.0
+offset_bottom = 639.0
+color = Color(0.2, 0.6, 0.854902, 1)
+
+[node name="Label" type="Label" parent="ColorRect"]
+layout_mode = 0
+offset_left = 114.0
+offset_top = 114.0
+offset_right = 1047.0
+offset_bottom = 213.0
+theme_override_font_sizes/font_size = 64
+text = "Welcome to DefendersDeck"
+label_settings = SubResource("LabelSettings_yqy4v")
+
+[node name="NewGameButton" type="TextureButton" parent="ColorRect"]
+layout_mode = 0
+offset_left = 465.0
+offset_top = 344.0
+offset_right = 657.0
+offset_bottom = 409.0
+texture_normal = ExtResource("2_fhts8")
+script = ExtResource("3_rc0aa")
+
+[node name="Label2" type="Label" parent="ColorRect/NewGameButton"]
+layout_mode = 0
+offset_left = 45.0
+offset_top = 19.0
+offset_right = 152.0
+offset_bottom = 42.0
+text = "New Game"
+label_settings = SubResource("LabelSettings_ld6o4")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_6e1nb")
+volume_db = 24.0
+
+[connection signal="pressed" from="ColorRect/NewGameButton" to="ColorRect/NewGameButton" method="_OnPressed"]

@@ -1,0 +1,35 @@
+[gd_scene load_steps=6 format=3 uid="uid://cxm25ju2rt0ca"]
+
+[ext_resource type="Script" path="res://Scripts/LevelManager.cs" id="1_mal2e"]
+[ext_resource type="PackedScene" uid="uid://b24jqvmgss25c" path="res://Assets/Nodes/TowerTile.tscn" id="2_sw8bs"]
+[ext_resource type="PackedScene" uid="uid://ckkaod7oqy8s3" path="res://Assets/Nodes/MapTile.tscn" id="3_4j4cb"]
+[ext_resource type="PackedScene" uid="uid://dnffqoibwusut" path="res://Assets/Nodes/Enemy.tscn" id="4_pn7ol"]
+
+[sub_resource type="Curve2D" id="Curve2D_5svll"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 231, 442, 0, 0, 0, 0, 1099, 443)
+}
+point_count = 2
+
+[node name="LevelScene" type="Node2D"]
+script = ExtResource("1_mal2e")
+_enemyAsset = ExtResource("4_pn7ol")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_right = 1152.0
+offset_bottom = 644.0
+color = Color(0.513726, 1, 1, 1)
+
+[node name="TileMapLayer" parent="." instance=ExtResource("2_sw8bs")]
+
+[node name="MapTile" parent="." instance=ExtResource("3_4j4cb")]
+
+[node name="EnemySpawnTimer" type="Timer" parent="."]
+wait_time = 2.0
+autostart = true
+
+[node name="Path2D" type="Path2D" parent="."]
+position = Vector2(0, 47)
+curve = SubResource("Curve2D_5svll")
+
+[connection signal="timeout" from="EnemySpawnTimer" to="." method="_OnEnemySpawn"]

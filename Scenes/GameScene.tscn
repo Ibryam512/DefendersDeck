@@ -1,0 +1,69 @@
+[gd_scene load_steps=7 format=3 uid="uid://di82q8cwub0w8"]
+
+[ext_resource type="Script" path="res://Scripts/GameManager.cs" id="1_dh5kk"]
+[ext_resource type="Texture2D" uid="uid://dylvfypxyc8pq" path="res://Assets/UI/skull.png" id="2_yrdiy"]
+[ext_resource type="FontFile" uid="uid://bcxkk3tp3yy2n" path="res://Assets/Fonts/Kenney Future.ttf" id="3_jphp4"]
+[ext_resource type="Texture2D" uid="uid://dsynbh7yrja3o" path="res://Assets/UI/suit_hearts.png" id="4_qhio8"]
+[ext_resource type="PackedScene" uid="uid://cxm25ju2rt0ca" path="res://Scenes/LevelScene.tscn" id="5_avimu"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_u1c4b"]
+font = ExtResource("3_jphp4")
+font_size = 32
+
+[node name="GameScene" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_dh5kk")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="EnemiesKilled" type="ColorRect" parent="CanvasLayer"]
+anchors_preset = -1
+anchor_right = 0.0104167
+offset_left = 25.0
+offset_top = 93.0
+offset_right = 113.0
+offset_bottom = 127.0
+color = Color(0, 0, 0, 0.341176)
+metadata/_edit_use_anchors_ = true
+
+[node name="Skull" type="Sprite2D" parent="CanvasLayer/EnemiesKilled"]
+position = Vector2(17, 17)
+scale = Vector2(0.46875, 0.46875)
+texture = ExtResource("2_yrdiy")
+
+[node name="Label" type="Label" parent="CanvasLayer/EnemiesKilled"]
+layout_mode = 0
+offset_left = 57.0
+offset_right = 97.0
+offset_bottom = 36.0
+text = "0"
+label_settings = SubResource("LabelSettings_u1c4b")
+horizontal_alignment = 2
+
+[node name="Health" type="ColorRect" parent="CanvasLayer"]
+offset_left = 25.0
+offset_top = 35.0
+offset_right = 125.0
+offset_bottom = 69.0
+color = Color(0, 0, 0, 0.341176)
+
+[node name="SuitHearts" type="Sprite2D" parent="CanvasLayer/Health"]
+position = Vector2(19, 17)
+scale = Vector2(0.59375, 0.59375)
+texture = ExtResource("4_qhio8")
+
+[node name="Label" type="Label" parent="CanvasLayer/Health"]
+layout_mode = 0
+offset_left = 57.0
+offset_right = 97.0
+offset_bottom = 36.0
+text = "0"
+label_settings = SubResource("LabelSettings_u1c4b")
+horizontal_alignment = 2
+
+[node name="LevelScene" parent="." instance=ExtResource("5_avimu")]
