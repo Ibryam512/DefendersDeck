@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=3 uid="uid://jbh7o613g4od"]
+
+[ext_resource type="Script" path="res://Scripts/UI/CardsContainer.cs" id="1_wvxju"]
+
+[node name="CardsView" type="Node"]
+script = ExtResource("1_wvxju")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="."]
+offset_left = 1280.0
+offset_top = -2.0
+offset_right = 1559.0
+offset_bottom = 721.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer"]
+layout_mode = 2

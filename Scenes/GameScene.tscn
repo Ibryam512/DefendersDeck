@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://di82q8cwub0w8"]
+[gd_scene load_steps=8 format=3 uid="uid://di82q8cwub0w8"]
 
 [ext_resource type="Script" path="res://Scripts/GameManager.cs" id="1_dh5kk"]
 [ext_resource type="Texture2D" uid="uid://dylvfypxyc8pq" path="res://Assets/UI/skull.png" id="2_yrdiy"]
 [ext_resource type="FontFile" uid="uid://bcxkk3tp3yy2n" path="res://Assets/Fonts/Kenney Future.ttf" id="3_jphp4"]
 [ext_resource type="Texture2D" uid="uid://dsynbh7yrja3o" path="res://Assets/UI/suit_hearts.png" id="4_qhio8"]
 [ext_resource type="PackedScene" uid="uid://cxm25ju2rt0ca" path="res://Scenes/LevelScene.tscn" id="5_avimu"]
+[ext_resource type="PackedScene" uid="uid://jbh7o613g4od" path="res://Assets/Nodes/CardsView.tscn" id="6_gg7du"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_u1c4b"]
 font = ExtResource("3_jphp4")
@@ -23,7 +24,7 @@ script = ExtResource("1_dh5kk")
 
 [node name="EnemiesKilled" type="ColorRect" parent="CanvasLayer"]
 anchors_preset = -1
-anchor_right = 0.0104167
+anchor_right = 0.00961538
 offset_left = 25.0
 offset_top = 93.0
 offset_right = 113.0
@@ -48,7 +49,7 @@ horizontal_alignment = 2
 [node name="Health" type="ColorRect" parent="CanvasLayer"]
 offset_left = 25.0
 offset_top = 35.0
-offset_right = 125.0
+offset_right = 128.0
 offset_bottom = 69.0
 color = Color(0, 0, 0, 0.341176)
 
@@ -67,3 +68,5 @@ label_settings = SubResource("LabelSettings_u1c4b")
 horizontal_alignment = 2
 
 [node name="LevelScene" parent="." instance=ExtResource("5_avimu")]
+
+[node name="CardsView" parent="." instance=ExtResource("6_gg7du")]
