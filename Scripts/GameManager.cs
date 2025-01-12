@@ -6,11 +6,15 @@ public partial class GameManager : Node
 {
 	public static GameManager Instance { get; set; }
 
-	private int _enemiesKilled = 0;
+	private int _enemiesKilled = 5;
 	private int _health = 10;
 
 	private Label _enemiesKilledLabel;
 	private Label _healthLabel;
+
+	private Card _activeCard;
+
+	public int EnemiesKilled => _enemiesKilled;
 
 	public List<Card> Cards { get; set; } = new List<Card>
 	{
@@ -19,7 +23,15 @@ public partial class GameManager : Node
 		new Card { Id = 3, ImagePath = "health-potion.png" },
 		new Card { Id = 4, ImagePath = "shadow-army.png" }
 	};
-	public Card ActiveCard { get; set; }
+	public Card ActiveCard 
+	{ 
+		get => _activeCard;
+		set 
+		{
+			_activeCard = value;
+			CardManager.Instance.Execute(_activeCard);
+		}
+	}
 
 	public override void _EnterTree()
 	{
@@ -55,14 +67,11 @@ public partial class GameManager : Node
 
 	public void OnCardSelected(int cardId)
 	{
-		GD.Print($"Selected card: {cardId}");
 		Card card = Cards.Find(c => c.Id == cardId);
-		GD.Print($"Selected card: {card.ImagePath}");
 
 		if (card != null)
 		{
 			ActiveCard = card;
-			GD.Print($"Selected card!!: {card.ImagePath}");
 		}
 	}
 

@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://n4tbsk4ccy6q"]
+[gd_scene load_steps=5 format=3 uid="uid://n4tbsk4ccy6q"]
 
-[ext_resource type="Script" path="res://Scripts/EnemyManager.cs" id="1_ll5oo"]
-[ext_resource type="Texture2D" uid="uid://c6s5fcikjom4v" path="res://Assets/UI/ghost.png" id="2_82wfn"]
+[ext_resource type="Script" path="res://Scripts/ShadowEnemyManager.cs" id="1_adfxt"]
+[ext_resource type="Texture2D" uid="uid://43idl3yx6hex" path="res://Assets/UI/shadow-ghost.png" id="2_4p0e3"]
+[ext_resource type="Script" path="res://Scripts/Controls/EnemyCollisionControl.cs" id="3_ylfiv"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1csjl"]
 size = Vector2(32.5, 48)
@@ -9,15 +10,19 @@ size = Vector2(32.5, 48)
 [node name="Enemy" type="PathFollow2D"]
 scale = Vector2(2, 2)
 loop = false
-script = ExtResource("1_ll5oo")
+script = ExtResource("1_adfxt")
 
 [node name="Shape" type="Sprite2D" parent="."]
 position = Vector2(-0.5, 0.5)
 scale = Vector2(0.598039, 0.598039)
-texture = ExtResource("2_82wfn")
+texture = ExtResource("2_4p0e3")
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="Area2D" type="Area2D" parent="." groups=["shadow"]]
+script = ExtResource("3_ylfiv")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(-1, 2)
 shape = SubResource("RectangleShape2D_1csjl")
+
+[connection signal="area_entered" from="Area2D" to="Area2D" method="_OnAreaEntered"]
+[connection signal="body_entered" from="Area2D" to="Area2D" method="_OnBodyEntered"]
