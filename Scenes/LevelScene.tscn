@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://cxm25ju2rt0ca"]
+[gd_scene load_steps=9 format=3 uid="uid://cxm25ju2rt0ca"]
 
 [ext_resource type="Script" path="res://Scripts/LevelManager.cs" id="1_mal2e"]
 [ext_resource type="PackedScene" uid="uid://b24jqvmgss25c" path="res://Assets/Nodes/TowerTile.tscn" id="2_sw8bs"]
 [ext_resource type="Script" path="res://Scripts/Controls/DropZoneControl.cs" id="3_1htfx"]
 [ext_resource type="PackedScene" uid="uid://n4tbsk4ccy6q" path="res://Assets/Nodes/ShadowEnemy.tscn" id="3_4dj4r"]
 [ext_resource type="PackedScene" uid="uid://ckkaod7oqy8s3" path="res://Assets/Nodes/MapTile.tscn" id="3_4j4cb"]
+[ext_resource type="PackedScene" uid="uid://bexebln72g3eu" path="res://Assets/Nodes/Arrow.tscn" id="4_aaysh"]
 [ext_resource type="PackedScene" uid="uid://dnffqoibwusut" path="res://Assets/Nodes/Enemy.tscn" id="4_pn7ol"]
 
 [sub_resource type="Curve2D" id="Curve2D_5svll"]
@@ -17,6 +18,7 @@ point_count = 2
 script = ExtResource("1_mal2e")
 _enemyAsset = ExtResource("4_pn7ol")
 _shadowEnemyAsset = ExtResource("3_4dj4r")
+_arrowAsset = ExtResource("4_aaysh")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 offset_right = 1281.0
@@ -44,5 +46,8 @@ script = ExtResource("3_1htfx")
 [node name="ShadowEnemySpawnTimer" type="Timer" parent="."]
 wait_time = 1.5
 
+[node name="ArrowSpawnTimer" type="Timer" parent="."]
+
 [connection signal="timeout" from="EnemySpawnTimer" to="." method="_OnEnemySpawn"]
 [connection signal="timeout" from="ShadowEnemySpawnTimer" to="." method="_OnShadowEnemySpawn"]
+[connection signal="timeout" from="ArrowSpawnTimer" to="." method="_OnArrowsSpawn"]

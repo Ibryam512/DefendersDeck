@@ -6,8 +6,8 @@ public partial class GameManager : Node
 {
 	public static GameManager Instance { get; set; }
 
-	private int _enemiesKilled = 5;
-	private int _health = 10;
+	private int _enemiesKilled = GameConstants.InitialEnemiesKilled;
+	private int _health = GameConstants.InitialHealth;
 
 	private Label _enemiesKilledLabel;
 	private Label _healthLabel;
@@ -15,6 +15,14 @@ public partial class GameManager : Node
 	private Card _activeCard;
 
 	public int EnemiesKilled => _enemiesKilled;
+	public int Health
+	{
+		set
+		{
+			_health = value;
+			UpdateUI();
+		}
+	}
 
 	public List<Card> Cards { get; set; } = new List<Card>
 	{
@@ -23,10 +31,10 @@ public partial class GameManager : Node
 		new Card { Id = 3, ImagePath = "health-potion.png" },
 		new Card { Id = 4, ImagePath = "shadow-army.png" }
 	};
-	public Card ActiveCard 
-	{ 
+	public Card ActiveCard
+	{
 		get => _activeCard;
-		set 
+		set
 		{
 			_activeCard = value;
 			CardManager.Instance.Execute(_activeCard);

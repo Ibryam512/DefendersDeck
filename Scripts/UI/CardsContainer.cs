@@ -1,5 +1,4 @@
 using Godot;
-using System;
 using System.Collections.Generic;
 public partial class CardsContainer : Node
 {
@@ -9,13 +8,10 @@ public partial class CardsContainer : Node
 
 	public override void _Ready()
 	{
-		GD.Print("CardsContainer ready");
-
 		_scrollContainer = GetNode<ScrollContainer>("ScrollContainer");
 		_vBoxContainer = _scrollContainer.GetNode<VBoxContainer>("VBoxContainer");
 
 		_cards = GameManager.Instance.Cards;
-		GD.Print($"Cards count: {_cards.Count}");
 
 		foreach (var card in _cards)
 		{

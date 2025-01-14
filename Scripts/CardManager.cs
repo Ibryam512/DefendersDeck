@@ -4,9 +4,8 @@ public partial class CardManager : Node
 {
     public static CardManager Instance { get; set; }
 
-    private Timer _timer;
-
-    public Timer Timer { set => _timer = value; }
+    public Timer ArrowsTimer { private get; set; }
+    public Timer ShadowArmyTimer { private get; set; }
 
     public ICommand ActiveCommand { get; set; }
 
@@ -19,8 +18,14 @@ public partial class CardManager : Node
     {
         switch (card.Id)
         {
+            case 2:
+                ActiveCommand = new ShootingArrowsCommand(ArrowsTimer);
+                break;
+            case 3:
+                ActiveCommand = new HealthPotionCommand();
+                break;
             case 4:
-                ActiveCommand = new ShadowArmyCommand(_timer);
+                ActiveCommand = new ShadowArmyCommand(ShadowArmyTimer);
                 break;
         }
 

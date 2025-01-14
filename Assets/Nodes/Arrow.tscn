@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://bexebln72g3eu"]
+
+[ext_resource type="Texture2D" uid="uid://c0pfji4epdd7l" path="res://Assets/UI/arrow.webp" id="1_vyq0h"]
+[ext_resource type="Script" path="res://Scripts/ArrowManager.cs" id="1_xkqjh"]
+[ext_resource type="Script" path="res://Scripts/Controls/EnemyCollisionControl.cs" id="2_m2xqu"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1p4a5"]
+size = Vector2(147.5, 29)
+
+[node name="Arrow" type="PathFollow2D"]
+loop = false
+script = ExtResource("1_xkqjh")
+
+[node name="Arrow" type="Sprite2D" parent="."]
+position = Vector2(1.25, -0.499999)
+scale = Vector2(0.725, 0.725)
+texture = ExtResource("1_vyq0h")
+
+[node name="Area2D" type="Area2D" parent="." groups=["arrow"]]
+script = ExtResource("2_m2xqu")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-5.75, 0.5)
+shape = SubResource("RectangleShape2D_1p4a5")
