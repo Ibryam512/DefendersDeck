@@ -17,6 +17,7 @@ public partial class LevelManager : Node2D
 	private Timer _arrowSpawnTimer;
 	private int _enemiesKilled = -1;
 	private int _arrows = GameConstants.InitialArrows;
+	private float _initialSpeed = GameConstants.InitialSpeed;
 
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
@@ -38,6 +39,7 @@ public partial class LevelManager : Node2D
 	public void _OnEnemySpawn()
 	{
 		Node enemy = _enemyAsset.Instantiate();
+		enemy.Set("speed", _initialSpeed);
 		_path.AddChild(enemy);
 	}
 
@@ -66,7 +68,13 @@ public partial class LevelManager : Node2D
 
 		if (_arrows == 0)
 		{
+			_arrows = GameConstants.InitialArrows;
 			_arrowSpawnTimer.Stop();
 		}
+	}
+
+	public void _OnSpeedUp()
+	{
+		_initialSpeed += 0.5f;
 	}
 }

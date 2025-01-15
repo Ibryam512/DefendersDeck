@@ -33,7 +33,7 @@ public partial class CardsContainer : Node
 		marginContainer.SizeFlagsVertical = Control.SizeFlags.ShrinkCenter;
 
 		TextureRect textureRect = new TextureRect();
-		textureRect.Texture = GD.Load<Texture2D>($"res://Assets/Cards/{card.ImagePath}");
+		textureRect.Texture = GD.Load<Texture2D>($"res://Assets/Cards/{card.ImageUrl}");
 		textureRect.StretchMode = TextureRect.StretchModeEnum.KeepAspect;
 		textureRect.SizeFlagsHorizontal = Control.SizeFlags.Expand;
 		textureRect.SizeFlagsVertical = Control.SizeFlags.Expand;

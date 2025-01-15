@@ -6,6 +6,8 @@ public partial class EnemyManager : PathFollow2D
 	private PathFollow2D _pathFollow;
 
 	private float _speed = 1f;
+
+	public float Speed { set => _speed = value; }
 	public int HP = 1;
 
 	// Called when the node enters the scene tree for the first time.

@@ -6,4 +6,5 @@ public static class GameConstants
     public const int InitialHealth = 10;
     public const int InitialEnemiesKilled = 0;
     public const int InitialArrows = 5;
+    public const float InitialSpeed = 1f;
 }

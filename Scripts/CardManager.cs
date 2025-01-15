@@ -18,13 +18,13 @@ public partial class CardManager : Node
     {
         switch (card.Id)
         {
-            case 2:
+            case 1:
                 ActiveCommand = new ShootingArrowsCommand(ArrowsTimer);
                 break;
-            case 3:
+            case 8:
                 ActiveCommand = new HealthPotionCommand();
                 break;
-            case 4:
+            case 9:
                 ActiveCommand = new ShadowArmyCommand(ShadowArmyTimer);
                 break;
         }

@@ -6,8 +6,8 @@ public partial class GameManager : Node
 {
 	public static GameManager Instance { get; set; }
 
-	private int _enemiesKilled = GameConstants.InitialEnemiesKilled;
-	private int _health = GameConstants.InitialHealth;
+	private int _enemiesKilled;
+	private int _health;
 
 	private Label _enemiesKilledLabel;
 	private Label _healthLabel;
@@ -24,13 +24,8 @@ public partial class GameManager : Node
 		}
 	}
 
-	public List<Card> Cards { get; set; } = new List<Card>
-	{
-		new Card { Id = 1, ImagePath = "earthquake.png" },
-		new Card { Id = 2, ImagePath = "fire-arrows.png" },
-		new Card { Id = 3, ImagePath = "health-potion.png" },
-		new Card { Id = 4, ImagePath = "shadow-army.png" }
-	};
+	public List<Card> Cards { get; set; } = new();
+
 	public Card ActiveCard
 	{
 		get => _activeCard;
@@ -51,12 +46,17 @@ public partial class GameManager : Node
 		{
 			QueueFree();
 		}
+
+		GetDeck();
 	}
 
 	public override void _Ready()
 	{
 		_enemiesKilledLabel = GetNode<Label>("CanvasLayer/EnemiesKilled/Label");
 		_healthLabel = GetNode<Label>("CanvasLayer/Health/Label");
+
+		_enemiesKilled = GameConstants.InitialEnemiesKilled;
+		_health = GameConstants.InitialHealth;
 
 		UpdateUI();
 	}
@@ -71,6 +71,11 @@ public partial class GameManager : Node
 	{
 		_health--;
 		UpdateUI();
+
+		if (_health <= 0)
+		{
+			GlobalSceneManager.Instance.ChangeScene("res://Scenes/EndScene.tscn");
+		}
 	}
 
 	public void OnCardSelected(int cardId)
@@ -83,9 +88,22 @@ public partial class GameManager : Node
 		}
 	}
 
+	public void GetDeck()
+	{
+		var httpManager = new HttpManager();
+		Cards = httpManager.GetDeck();
+	}
+
 	private void UpdateUI()
 	{
 		_enemiesKilledLabel.Text = $"{_enemiesKilled}";
 		_healthLabel.Text = $"{_health}";
+	}
+
+	private void InitializeGame()
+	{
+		_enemiesKilled = GameConstants.InitialEnemiesKilled;
+		_health = GameConstants.InitialHealth;
+		UpdateUI();
 	}
 }

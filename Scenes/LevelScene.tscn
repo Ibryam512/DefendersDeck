@@ -48,6 +48,9 @@ wait_time = 1.5
 
 [node name="ArrowSpawnTimer" type="Timer" parent="."]
 
+[node name="SpeedTimer" type="Timer" parent="."]
+
 [connection signal="timeout" from="EnemySpawnTimer" to="." method="_OnEnemySpawn"]
 [connection signal="timeout" from="ShadowEnemySpawnTimer" to="." method="_OnShadowEnemySpawn"]
 [connection signal="timeout" from="ArrowSpawnTimer" to="." method="_OnArrowsSpawn"]
+[connection signal="timeout" from="SpeedTimer" to="." method="_OnSpeedUp"]

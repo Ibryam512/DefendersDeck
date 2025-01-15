@@ -36,6 +36,24 @@ theme_override_font_sizes/font_size = 64
 text = "Welcome to DefendersDeck"
 label_settings = SubResource("LabelSettings_yqy4v")
 
+[node name="MarketButton" type="TextureButton" parent="ColorRect"]
+offset_left = 706.0
+offset_top = 479.0
+offset_right = 898.0
+offset_bottom = 544.0
+disabled = true
+texture_normal = ExtResource("2_fhts8")
+
+[node name="Label2" type="Label" parent="ColorRect/MarketButton"]
+layout_mode = 0
+offset_left = 48.0
+offset_top = 19.0
+offset_right = 155.0
+offset_bottom = 42.0
+text = "Market"
+label_settings = SubResource("LabelSettings_ld6o4")
+horizontal_alignment = 1
+
 [node name="NewGameButton" type="TextureButton" parent="ColorRect"]
 layout_mode = 0
 offset_left = 702.0
@@ -58,4 +76,5 @@ label_settings = SubResource("LabelSettings_ld6o4")
 stream = ExtResource("4_6e1nb")
 volume_db = 24.0
 
+[connection signal="pressed" from="ColorRect/MarketButton" to="ColorRect/MarketButton" method="_OnPressed"]
 [connection signal="pressed" from="ColorRect/NewGameButton" to="ColorRect/NewGameButton" method="_OnPressed"]
