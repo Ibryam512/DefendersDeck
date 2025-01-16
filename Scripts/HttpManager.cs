@@ -10,7 +10,6 @@ public class HttpManager
     // знам, че това не е коректен начин за имплементация :)
     public List<Card> GetDeck()
     {
-        GD.Print("GetDeckAsync");
         using (System.Net.Http.HttpClient client = new())
         {
             client.DefaultRequestHeaders.Add("Authorization", $"Bearer {_token}");

@@ -13,6 +13,7 @@ public partial class LevelManager : Node2D
 	private PackedScene _arrowAsset;
 
 	private Path2D _path;
+	private Timer _enemySpawnTimer;
 	private Timer _shadowEnemySpawnTimer;
 	private Timer _arrowSpawnTimer;
 	private int _enemiesKilled = -1;
@@ -23,6 +24,8 @@ public partial class LevelManager : Node2D
 	public override void _Ready()
 	{
 		_path = GetNode<Path2D>("Path2D");
+
+		_enemySpawnTimer = GetNode<Timer>("EnemySpawnTimer");
 
 		_arrowSpawnTimer = GetNode<Timer>("ArrowSpawnTimer");
 		CardManager.Instance.ArrowsTimer = _arrowSpawnTimer;
@@ -76,5 +79,6 @@ public partial class LevelManager : Node2D
 	public void _OnSpeedUp()
 	{
 		_initialSpeed += 0.5f;
+		_enemySpawnTimer.WaitTime -= 0.125f;
 	}
 }
