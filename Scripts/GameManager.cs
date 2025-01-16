@@ -15,6 +15,7 @@ public partial class GameManager : Node
 	private Card _activeCard;
 
 	public int EnemiesKilled => _enemiesKilled;
+	public bool Win { get; set; }
 	public int Health
 	{
 		set
@@ -65,6 +66,12 @@ public partial class GameManager : Node
 	{
 		_enemiesKilled++;
 		UpdateUI();
+
+		if (_enemiesKilled >= GameConstants.EnemiesToKill)
+		{
+			GlobalSceneManager.Instance.ChangeScene("res://Scenes/EndScene.tscn");
+			Win = true;
+		}
 	}
 
 	public void OnTowerHit()
@@ -75,6 +82,7 @@ public partial class GameManager : Node
 		if (_health <= 0)
 		{
 			GlobalSceneManager.Instance.ChangeScene("res://Scenes/EndScene.tscn");
+			Win = false;
 		}
 	}
 

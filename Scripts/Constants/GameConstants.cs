@@ -7,4 +7,5 @@ public static class GameConstants
     public const int InitialEnemiesKilled = 0;
     public const int InitialArrows = 5;
     public const float InitialSpeed = 1f;
+    public const int EnemiesToKill = 100;
 }

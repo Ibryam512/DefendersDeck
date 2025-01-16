@@ -38,8 +38,8 @@ public partial class LevelManager : Node2D
 
 	public void _OnEnemySpawn()
 	{
-		Node enemy = _enemyAsset.Instantiate();
-		enemy.Set("speed", _initialSpeed);
+		EnemyManager enemy = _enemyAsset.Instantiate<EnemyManager>();
+		enemy.Speed = _initialSpeed;
 		_path.AddChild(enemy);
 	}
 

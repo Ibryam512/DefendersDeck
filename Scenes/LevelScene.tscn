@@ -49,6 +49,7 @@ wait_time = 1.5
 [node name="ArrowSpawnTimer" type="Timer" parent="."]
 
 [node name="SpeedTimer" type="Timer" parent="."]
+autostart = true
 
 [connection signal="timeout" from="EnemySpawnTimer" to="." method="_OnEnemySpawn"]
 [connection signal="timeout" from="ShadowEnemySpawnTimer" to="." method="_OnShadowEnemySpawn"]

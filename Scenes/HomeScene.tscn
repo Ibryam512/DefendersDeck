@@ -37,6 +37,7 @@ text = "Welcome to DefendersDeck"
 label_settings = SubResource("LabelSettings_yqy4v")
 
 [node name="MarketButton" type="TextureButton" parent="ColorRect"]
+layout_mode = 0
 offset_left = 706.0
 offset_top = 479.0
 offset_right = 898.0

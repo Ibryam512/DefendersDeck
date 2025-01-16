@@ -1,6 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://cu5ughx5ii57f"]
+[gd_scene load_steps=8 format=3 uid="uid://cu5ughx5ii57f"]
 
 [ext_resource type="FontFile" uid="uid://bcxkk3tp3yy2n" path="res://Assets/Fonts/Kenney Future.ttf" id="1_c8qcu"]
+[ext_resource type="Script" path="res://Scripts/EndGameManager.cs" id="1_lj1yb"]
 [ext_resource type="Texture2D" uid="uid://bxn6gjmtvmrt7" path="res://Assets/UI/button_rectangle_depth_gradient.png" id="2_wn4vm"]
 [ext_resource type="Script" path="res://Scripts/UI/NewGameButton.cs" id="3_nnev3"]
 [ext_resource type="AudioStream" uid="uid://cebcvbuogg578" path="res://Assets/Audio/tap-a.ogg" id="4_olbbc"]
@@ -19,8 +20,10 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_lj1yb")
 
 [node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
 offset_right = 1563.0
 offset_bottom = 723.0
 color = Color(0.2, 0.6, 0.854902, 1)
